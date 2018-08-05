@@ -1,0 +1,17 @@
+Cython
+Flask
+Flask-SQLAlchemy
+Flask-WTF
+itsdangerous
+Jinja2
+numpy
+pandas
+PlanOut
+PyMySQL
+requests
+SQLAlchemy
+SQLAlchemy-Utils
+urllib3
+websocket-client
+Werkzeug
+WTForms

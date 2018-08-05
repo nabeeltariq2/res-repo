@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<form class="form-signin" method="POST">
+    <h3 class="form-signin-heading">Please Create an Account</h3>
+    <h4>These fields are required! This data will not be used for any marketing or contact purposes.</h4>
+    <!-- <input type="first_name" name="first_name" class="form-control" placeholder="First Name" required autofocus /> -->
+    <!-- <input type="last_name" name="last_name" class="form-control" placeholder="Last Name" required autofocus /> -->
+    <input type="email" name="email" class="form-control" placeholder="Email Address" required autofocus />
+    <input type="password" name="password" class="form-control" placeholder="Password" required />
+    <input type="turk_id" name="turk_id" class="form-control" placeholder="Turk ID" />
+
+
+    <div class="panel-heading" style="background-color:#f2f4f7">
+      <h4>These are optional! However, please fill these as much as possible, they will really help us in making your recommendations better!</h4>
+
+      <input type="age" name="age" class="form-control" placeholder="Age(Numbers)"/>
+      <input type="gender" name="gender" class="form-control" placeholder="Gender (M/F)"/>
+      <input type="occupation" name="occupation" class="form-control" placeholder="Occupation"/>
+      <input type="state" name="state" class="form-control" placeholder="State/Province"/>
+      <input type="country" name="country" class="form-control" placeholder="Country" />
+
+    </div>
+
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

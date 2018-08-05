@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<!-- <h1>Instructions</h1> -->
+
+
+<div class="panel panel-heading"style="background-color:#e8ebef">
+
+
+
+
+
+<h1>Instructions</h1>
+<div class="container"> </div>
+
+<ul>
+  <li><h4> Click on <b>My Movie List</b>. This contains a list of movies you can explore for further details.  </h4></li>
+  <li><h4> Click on <b>each movie to view further details and rate it out of a score of 5</b> based on your liking. Take your time to explore each movie and rate it based on your opinion. The more movies you rate, the better the recommendations you will get. </h4></li>
+  <li><h4> Once you have rated all the movies you want, click on <b>Calculate & Show Recommendations</b>. <b>It will take 2-3 minutes for the next page to load, so you can do anything else in the meanwhile</b>. Don't click on anything else till the page loads. </h4></li>
+  <li><h4> The next pages will <b>display your recommendations, and some questions</b> related to those that you may need to answer. <b>Take your time to explore each recommended movie</b> (click on it for further details) and then answer the relevant questions.</h4></li>
+  <li><h4> That's it for one session! Explore and rate more/different movies to get more recommendations. Tell us how they differ from the previous ones! </h4></li>
+  <li><h3>THINGS to NOTE:</h3></li>
+  <li><h4>Please complete all the questions in one single session, otherwise the recommendations will reset! Movies you rated will be saved though.</h4></li>
+  <li><h4>Please wait for every page to completely load before using it. You can see the loading status on the browser tab name.</h4></li>
+  <li><h4>That's it!Enjoy!!</h4></li>
+</ul>
+</div>
+
+<!-- <li><a href="/view_user">Go to Marketplace / My Items</a></li> -->
+
+<!-- <button class="btn btn-success btn-lg" type="submit" >Submit Overall Feedback</button> -->
+
+<form action="/view_user/{{session['user']}}">
+    <input type="submit" value="Go to My Movie List" style="height:50px; width:200px"/>
+</form>
+
+
+
+
+<div class="container">
+<h4>In case of any queries/issues/additional feedback, please email <b>movirec_movies@gmail.com</b></h4>
+</div>
+
+
+
+{% endblock %}

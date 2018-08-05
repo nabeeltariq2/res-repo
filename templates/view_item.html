@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<link rel="stylesheet" href="/static/css/custom.css"/>
+
+
+<div class="container">
+  <h3><b>Instructions</b></h3>
+  <h4> <strong>Take your time to explore </strong>each and every detail about a movie before rating it.Trailer links are available for some movies, but you may need to search on YouTube if it's not available.</h4>
+  <h4>The rating is out of <strong>5 stars</strong>, with an interval of 0.5 star.</h4>
+  <h4>Once you complete rating for a movie, you will be redirected to your movie list, where the rating will show up. If you need to remove the rating for a movie, simply come back to this page, select no options for the stars, and click update. The rating will be removed.</h4>
+  <!-- <h4>You can sort the columns by clicking on the column names. You can filter each column as well, look at the bottom of the the table </h4> -->
+
+</div>
+
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h4><strong>Movie Details</strong></h4>
+    <h2><strong>{{item.title}}</strong></h2>
+    <h4>Year:<strong>{{item.year}}</strong></h4>
+    <h4>Genres:<strong>{{item.genres}}</strong></h4>
+    <img src=http://image.tmdb.org/t/p/w300/{{item.poster_path}}>
+
+    <h3><strong>Summary</strong></h3>
+    <!-- <a href="http://www.imdb.com/title/{{item.imdb_id}}"><h4>Visit IMDB page</h4></a> -->
+    <!-- <img src=http://www.imdb.com/title/{{item.imdb_id}}> -->
+
+    <h3>{{item.overview}}</h3>
+
+<div class="container"></div>
+    <h3><strong>Page Links (If a link doesn't work, just search directly on the IMDB or YouTube website)</strong></h3>
+    <a href="http://www.imdb.com/title/{{item.imdb_id}}" target="_blank"><h3>IMDB page</h3></a>
+    <a href="https://www.youtube.com/watch?v={{item.youtubeId}}" target="_blank"><h3>YouTube Trailer</h3></a>
+
+  </div>
+
+  <!-- <div class="panel-heading"><h3><strong>Item Image</strong></h3>
+    <img src={{item.imgurl}}>
+  </div> -->
+
+
+
+  {% if session['user'] != None %}
+  <div class="panel-heading" id="update-div"><h3><strong>Rate this Movie out of 10</strong></h3>
+
+
+
+  <form class="form-check" action="/update_rating" method="POST">
+  <div class="control-group inline">
+    <label class="control-label"></label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="rating" id="0" value="0"><h4>0</h4></label>
+      <label class="radio">
+        <input type="radio" name="rating" id="1" value="1"><h4>1</h4></label>
+      <label class="radio">
+        <input type="radio" name="rating" id="2" value="2"><h4>2</h4></label>
+      <label class="radio">
+          <input type="radio" name="rating" id="3" value="3"><h4>3</h4></label>
+          <label class="radio">
+            <input type="radio" name="rating" id="4" value="4"><h4>4</h4></label>
+          <label class="radio">
+            <input type="radio" name="rating" id="5" value="5"><h4>5</h4></label>
+            <label class="radio">
+              <input type="radio" name="rating" id="6" value="6"><h4>6</h4></label>
+              <label class="radio">
+                    <input type="radio" name="rating" id="7" value="7"><h4>7</h4></label>
+                <label class="radio">
+                <input type="radio" name="rating" id="8" value="8"><h4>8</h4></label>
+                <label class="radio">
+                    <input type="radio" name="rating" id="9" value="9"><h4>9</h4></label>
+                <label class="radio">
+                    <input type="radio" name="rating" id="10" value="10"><h4>10</h4></label>
+        <input type="hidden" name="item" value="{{item.id}}">
+
+        <div class="panel-heading">
+          <h3>Optional Task: A few words</h3>
+          <h4> What do you think about this movie (can be anything e.g. your impressions, the plot, cast, acting, visual effects etc)?.</h4>
+          <h4>Please add a few words. It will really help us in making your recommendations better.</h4>
+        <div class="control-group inline">
+        <div class="controls">
+          <div class="container">
+
+          </div>
+        <textarea name="text_rating" rows="8" cols="80"></textarea>
+
+        </div>
+        </div>
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+  <button class="btn btn-success btn-lg" id="update-button" type="submit">Update Rating For Item</button>
+  </form>
+
+
+<!-- </div>
+
+  <div class="panel-heading" id="update-div"><h3><strong>Cart Actions</strong></h3>
+
+
+    <div class="btn-group">
+      <form class="form-inline" action="/add_cart" method="POST">
+        <button class="btn btn-info" id="update-button" type="submit">Add item to Cart</button>
+        <input type="hidden" name="item" value="{{item.id}}">
+  </form>
+
+  <form class="form-inline" action="/delete_cart" method="POST">
+  <button class="btn btn-warning" id="update-button" type="submit">Delete item From Cart</button>
+  <input type="hidden" name="item" value="{{item.id}}">
+  </form>
+
+</div>
+
+</div> -->
+
+  {% else %}
+<!--
+  <div class="panel-heading">
+  <form class="form-inline" action="/add_rating" method="POST">
+      <h4 class="form-signin-heading"><strong>Add a new rating:</strong></h4>
+      <input type="rating" name="rating" class="form-control" placeholder="Rating" required autofocus />
+      <input type="hidden" name="item" value="{{item.id}}">
+      <button class="btn btn-primary" type="submit">Save</button>
+  </form>
+  </div> -->
+
+  {% endif %}
+
+
+
+  </div>
+
+
+  <!-- <form aclass="form-inline" action="/delete_item/<int:id>" method="POST">
+    <button class="btn danger" type="submit">Delete Item</button>
+  </form> -->
+
+
+
+
+{% endblock %}

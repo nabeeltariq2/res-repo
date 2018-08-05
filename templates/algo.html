@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+
+<script type="text/javascript">
+
+setTimeout(function ()
+    {
+        if (self.name != '_refreshed_'){
+        self.name = '_refreshed_';
+        self.location.reload(true);
+    } else {
+        self.name = '';
+    }
+    }, 500);
+
+
+</script>
+
+
+
+<div class="container">
+  <h3><b>Instructions</b></h3>
+  <h4>Your currently running algorithms will be shown below. They are randomly selected between 1 & 2 each time recommendations are computed for a user.</h4>
+  <h4>You can select and update algorithms by clicking on them.</h4>
+</div>
+
+
+<div class="panel panel-heading">
+  <h3><b>Currently run algorithms are:</b></h3>
+
+  <h2>Currently, the <strong><font color="red">{{algo1_id[0].id}}st</font></strong> algorithm is <strong><font color="red">{{algo1_id[0].algorithm}}</font></strong></h2>
+  <h2>Currently, the <strong><font color="red">{{algo2_id[0].id}}nd</font></strong> algorithm is <strong><font color="red">{{algo2_id[0].algorithm}}</font></strong></h2>
+
+</div>
+
+
+
+<div class="container">
+  <h3><b>Update Algorithms</b></h3>
+  <h4>Update Algorithms 1 & 2 by clicking on them.</h4>
+  <h4>You need to select both algorithms, even if you want to select the ones running previously!! Otherwise the algorithms will default to random and not work properly.</h4>
+  <h4>Once you click update, the page will update and you'll see updated algorithms in 'currently run algorithms'. You can leave / close the page then. Don't click update again!</h4>
+
+</div>
+
+
+
+
+
+
+<form class="form-horizontal" action="/update_algo" method="POST">
+
+
+<div class="panel panel-body" style="background-color:#e8ebef">
+<h2>Select algorithm 1</h2>
+<div class="">
+</div>
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" checked="checked" name="algorithm_1" id="1" value="recommender1_random">Random Recommendations</label>
+<label class="radio">
+  <input type="radio" name="algorithm_1" id="2" value="recommender2_topitems">Most Popular Items</label>
+<label class="radio">
+  <input type="radio" name="algorithm_1" id="1" value="recommender3_svd">Matrix Factorization / SVD without Biases</label>
+<label class="radio">
+  <input type="radio" name="algorithm_1" id="1" value="recommender4_knn">Item-based KNN</label>
+<!-- <label class="radio"> -->
+  <!-- <input type="radio" name="algorithm_1" id="1" value="recommender5_nmf">recommender5_nmf</label> -->
+<label class="radio">
+  <input type="radio" name="algorithm_1" id="1" value="recommender6_slopeone">SlopeOne</label>
+<label class="radio">
+  <input type="radio" name="algorithm_1" id="1" value="recommender7_baseline">Baseline</label>
+<label class="radio">
+<input type="radio" name="algorithm_1" id="1" value="recommender8_normal">Random Recommendation - Normal Distribution</label>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel panel-body" style="background-color:#e8ebef">
+<h2>Select algorithm 2</h2>
+<div class="">
+</div>
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" checked="checked" name="algorithm_2" id="1" value="recommender1_random">Random Recommendations</label>
+<label class="radio">
+  <input type="radio" name="algorithm_2" id="2" value="recommender2_topitems">Most Popular Items</label>
+<label class="radio">
+  <input type="radio" name="algorithm_2" id="1" value="recommender3_svd">Matrix Factorization / SVD without Biases</label>
+<label class="radio">
+  <input type="radio" name="algorithm_2" id="1" value="recommender4_knn">Item-based KNN</label>
+<!-- <label class="radio"> -->
+  <!-- <input type="radio" name="algorithm_2" id="1" value="recommender5_nmf">recommender5_nmf</label> -->
+<label class="radio">
+  <input type="radio" name="algorithm_2" id="1" value="recommender6_slopeone">SlopeOne</label>
+<label class="radio">
+  <input type="radio" name="algorithm_2" id="1" value="recommender7_baseline">Baseline</label>
+<label class="radio">
+<input type="radio" name="algorithm_2" id="1" value="recommender8_normal">Random Recommendation - Normal Distribution</label>
+</div>
+</div>
+</div>
+
+<div class="panel panel-heading" >
+
+<button class="btn btn-success btn-lg" id="update-button" type="submit">Update Algorithms</button>
+</div>
+
+    </form>
+
+
+
+{% endblock %}

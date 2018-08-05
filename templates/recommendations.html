@@ -1,0 +1,794 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+
+<script type="text/javascript">
+
+setTimeout(function ()
+    {
+        if (self.name != '_refreshed_'){
+        self.name = '_refreshed_';
+        self.location.reload(true);
+    } else {
+        self.name = '';
+    }
+  }, 500);
+
+
+</script>
+
+
+
+<h2>Your Movie Recommendations</h2>
+
+<div class="container">
+  <h3><b>Instructions</b></h3>
+  <h4><b>Refresh this page first before reading anything else. Use your browser's refresh button.</b></h4>
+  <h4> This page shows your top 5 recommended movies. <strong>Click on the movie title to view more details</strong>.It will open in a new tab.</h4>
+  <h4>Please take your time and explore each movie in detail. <strong>Read the descriptions and watch trailers</strong>, especially if you haven't watched this movie before. It is essential that you do so to answer the questions properly.</h4>
+  <h4>After you've gone through a movie in detail, answer the questions. You can submit your feedback by clicking the button at the end of the page</h4>
+  <!-- <h4>You can sort the columns by clicking on the column names. You can filter each column as well, look at the bottom of the the table </h4> -->
+
+</div>
+<!--
+<b>How similar are these recommendations to your list preferences?</b>
+<div class="">
+</div>
+<b>Please rate on a scale of 0 to 5, 5 being most similar</b> -->
+<div class="panel panel-default">
+
+
+
+  <!-- Default panel contents -->
+
+      <form class="form-inline" action="/rate_recommendations" method="POST">
+
+<!-- For Recommendation 1.......................................................................... -->
+
+
+<div class="panel-heading">
+
+        <h3><strong><a href="/view_recommended_item/{{pred_1.id}}" target="_blank">{{pred_1.title}}</a></strong></h3>
+        <h6>click on title for more details</h6>
+        <h4> Your predicted rating for {{pred_1.title}} is {{tp_1.num_1}} out of 10</h4>
+        <!-- <td><a href="/view_item/{{pred_1.id}}">{{pred_1.title}}</a></td> -->
+        <h6> Item id:{{rec.pred_1}}:{{pred_1.id}}</h6>
+
+        <!-- <img src={{pred_1.imgurl}}> -->
+        <h4><strong>Please answer the following questions, after experiencing each movie.</strong></h4>
+
+
+        <div class="panel panel-body" style="background-color:#f2f4f7">
+
+
+
+        <div class="panel-heading">
+          <h4>This movie is similar to the movies I rated / matches my list preferences.</h4>
+
+      <div class="control-group inline">
+        <div class="controls">
+          <label class="radio">
+            <input type="radio" name="user_rating_1" id="1" value="1">Strongly Disagree</label>
+          <label class="radio">
+            <input type="radio" name="user_rating_1" id="2" value="2">Disagree</label>
+                <label class="radio">
+            <input type="radio" name="user_rating_1" id="3" value="3">Neutral</label>
+                <label class="radio">
+            <input type="radio" name="user_rating_1" id="4" value="4">Agree</label>
+                <label class="radio">
+            <input type="radio" name="user_rating_1" id="5" value="5">Strongly Agree</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-heading">
+      <h4>This is the first time I'm seeing/hearing about this movie.</h4>
+
+  <div class="control-group inline">
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="novel_rating_1" id="1" value="1">Strongly Disagree</label>
+      <label class="radio">
+        <input type="radio" name="novel_rating_1" id="2" value="2">Disagree</label>
+            <label class="radio">
+        <input type="radio" name="novel_rating_1" id="3" value="3">Neutral</label>
+            <label class="radio">
+        <input type="radio" name="novel_rating_1" id="4" value="4">Agree</label>
+            <label class="radio">
+        <input type="radio" name="novel_rating_1" id="5" value="5">Strongly Agree</label>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel-heading">
+  <h4>This movie is different from the type of movies i usually watch.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+  <label class="radio">
+    <input type="radio" name="unexp_implic_1" id="1" value="1">Strongly Disagree</label>
+  <label class="radio">
+    <input type="radio" name="unexp_implic_1" id="2" value="2">Disagree</label>
+        <label class="radio">
+    <input type="radio" name="unexp_implic_1" id="3" value="3">Neutral</label>
+        <label class="radio">
+    <input type="radio" name="unexp_implic_1" id="4" value="4">Agree</label>
+        <label class="radio">
+    <input type="radio" name="unexp_implic_1" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-heading">
+  <h4>I normally wouldn’t have discovered this movie on my own. I needed a website like this to find movies like this one.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+  <label class="radio">
+    <input type="radio" name="unexp_find_rating_1" id="1" value="1">Strongly Disagree</label>
+  <label class="radio">
+    <input type="radio" name="unexp_find_rating_1" id="2" value="2">Disagree</label>
+        <label class="radio">
+    <input type="radio" name="unexp_find_rating_1" id="3" value="3">Neutral</label>
+        <label class="radio">
+    <input type="radio" name="unexp_find_rating_1" id="4" value="4">Agree</label>
+        <label class="radio">
+    <input type="radio" name="unexp_find_rating_1" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+  <h4> I am pleasantly surprised / (or in a positive way) that i was recommended this movie.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+  <label class="radio">
+    <input type="radio" name="unexp_recom_rating_1" id="1" value="1">Strongly Disagree</label>
+  <label class="radio">
+    <input type="radio" name="unexp_recom_rating_1" id="2" value="2">Disagree</label>
+        <label class="radio">
+    <input type="radio" name="unexp_recom_rating_1" id="3" value="3">Neutral</label>
+        <label class="radio">
+    <input type="radio" name="unexp_recom_rating_1" id="4" value="4">Agree</label>
+        <label class="radio">
+    <input type="radio" name="unexp_recom_rating_1" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+  <h4> (Answer after going through the other recommendations). This movie is different from the other movies recommended.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+  <label class="radio">
+    <input type="radio" name="diversity_rating_1" id="1" value="1">Strongly Disagree</label>
+  <label class="radio">
+    <input type="radio" name="diversity_rating_1" id="2" value="2">Disagree</label>
+        <label class="radio">
+    <input type="radio" name="diversity_rating_1" id="3" value="3">Neutral</label>
+        <label class="radio">
+    <input type="radio" name="diversity_rating_1" id="4" value="4">Agree</label>
+        <label class="radio">
+    <input type="radio" name="diversity_rating_1" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- For Recommendation 2.......................................................................... -->
+
+
+
+<div class="panel-heading">
+
+      <h3><strong><a href="/view_recommended_item/{{pred_2.id}}" target="_blank">{{pred_2.title}}</a></strong></h3>
+      <h6>click on title for more details</h6>
+      <h4> Your predicted rating for {{pred_2.title}} is {{tp_1.num_2}} out of 10</h4>
+      <!-- <td><a href="/view_item/{{pred_2.id}}">{{pred_2.title}}</a></td> -->
+      <h6> Item id:{{rec.pred_2}}:{{pred_2.id}}</h6>
+      <!-- <img src={{pred_2.imgurl}}> -->
+      <h4><strong>Please answer the following questions, after experiencing each movie.</strong></h4>
+
+
+      <div class="panel panel-body" style="background-color:#f2f4f7">
+
+
+
+      <div class="panel-heading">
+        <h4>This movie is similar to the movies I rated / matches my list preferences.</h4>
+
+    <div class="control-group inline">
+      <div class="controls">
+        <label class="radio">
+          <input type="radio" name="user_rating_2" id="1" value="1">Strongly Disagree</label>
+        <label class="radio">
+          <input type="radio" name="user_rating_2" id="2" value="2">Disagree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_2" id="3" value="3">Neutral</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_2" id="4" value="4">Agree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_2" id="5" value="5">Strongly Agree</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-heading">
+    <h4>This is the first time I'm seeing/hearing about this movie.</h4>
+
+<div class="control-group inline">
+  <div class="controls">
+    <label class="radio">
+      <input type="radio" name="novel_rating_2" id="1" value="1">Strongly Disagree</label>
+    <label class="radio">
+      <input type="radio" name="novel_rating_2" id="2" value="2">Disagree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_2" id="3" value="3">Neutral</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_2" id="4" value="4">Agree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_2" id="5" value="5">Strongly Agree</label>
+  </div>
+</div>
+</div>
+
+
+<div class="panel-heading">
+<h4>This movie is different from the type of movies i usually watch.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_implic_2" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_implic_2" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_2" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_2" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_2" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-heading">
+<h4>I normally wouldn’t have discovered this movie on my own. I needed a website like this to find movies like this one.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_2" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_2" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_2" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_2" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_2" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> I am pleasantly surprised / (or in a positive way) that i was recommended this movie.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_2" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_2" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_2" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_2" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_2" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> (Answer after going through the other recommendations). This movie is different from the other movies recommended.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="diversity_rating_2" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="diversity_rating_2" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_2" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_2" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_2" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+<!-- For Recommendation 3.......................................................................... -->
+
+<div class="panel-heading">
+      <h3><strong><a href="/view_recommended_item/{{pred_3.id}}" target="_blank">{{pred_3.title}}</a></strong></h3>
+      <h6>click on title for more details</h6>
+      <h4> Your predicted rating for {{pred_3.title}} is {{tp_1.num_3}} out of 10</h4>
+
+      <!-- <td><a href="/view_item/{{pred_3.id}}">{{pred_3.title}}</a></td> -->
+      <h6> Item id:{{rec.pred_3}}:{{pred_3.id}}</h6>
+      <!-- <img src={{pred_3.imgurl}}> -->
+      <h4><strong>Please answer the following questions, after experiencing each movie.</strong></h4>
+
+
+      <div class="panel panel-body" style="background-color:#f2f4f7">
+
+
+
+      <div class="panel-heading">
+        <h4>This movie is similar to the movies I rated / matches my list preferences.</h4>
+
+    <div class="control-group inline">
+      <div class="controls">
+        <label class="radio">
+          <input type="radio" name="user_rating_3" id="1" value="1">Strongly Disagree</label>
+        <label class="radio">
+          <input type="radio" name="user_rating_3" id="2" value="2">Disagree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_3" id="3" value="3">Neutral</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_3" id="4" value="4">Agree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_3" id="5" value="5">Strongly Agree</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-heading">
+    <h4>This is the first time I'm seeing/hearing about this movie.</h4>
+
+<div class="control-group inline">
+  <div class="controls">
+    <label class="radio">
+      <input type="radio" name="novel_rating_3" id="1" value="1">Strongly Disagree</label>
+    <label class="radio">
+      <input type="radio" name="novel_rating_3" id="2" value="2">Disagree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_3" id="3" value="3">Neutral</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_3" id="4" value="4">Agree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_3" id="5" value="5">Strongly Agree</label>
+  </div>
+</div>
+</div>
+
+
+<div class="panel-heading">
+<h4>This movie is different from the type of movies i usually watch.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_implic_3" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_implic_3" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_3" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_3" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_3" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-heading">
+<h4>I normally wouldn’t have discovered this movie on my own. I needed a website like this to find movies like this one.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_3" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_3" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_3" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_3" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_3" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> I am pleasantly surprised / (or in a positive way) that i was recommended this movie.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_3" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_3" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_3" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_3" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_3" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> (Answer after going through the other recommendations). This movie is different from the other movies recommended.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="diversity_rating_3" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="diversity_rating_3" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_3" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_3" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_3" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- For Recommendation 4.......................................................................... -->
+<div class="panel-heading">
+      <h3><strong><a href="/view_recommended_item/{{pred_4.id}}" target="_blank">{{pred_4.title}}</a></strong></h3>
+      <h6>click on title for more details</h6>
+      <h4> Your predicted rating for {{pred_4.title}} is {{tp_1.num_4}} out of 10</h4>
+      <!-- <td><a href="/view_item/{{pred_4.id}}">{{pred_4.title}}</a></td> -->
+      <h6> Item id:{{rec.pred_4}}:{{pred_4.id}}</h6>
+      <!-- <img src={{pred_4.imgurl}}> -->
+      <h4><strong>Please answer the following questions, after experiencing each movie.</strong></h4>
+
+
+      <div class="panel panel-body" style="background-color:#f2f4f7">
+
+
+
+      <div class="panel-heading">
+        <h4>This movie is similar to the movies I rated / matches my list preferences.</h4>
+
+    <div class="control-group inline">
+      <div class="controls">
+        <label class="radio">
+          <input type="radio" name="user_rating_4" id="1" value="1">Strongly Disagree</label>
+        <label class="radio">
+          <input type="radio" name="user_rating_4" id="2" value="2">Disagree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_4" id="3" value="3">Neutral</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_4" id="4" value="4">Agree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_4" id="5" value="5">Strongly Agree</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-heading">
+    <h4>This is the first time I'm seeing/hearing about this movie.</h4>
+
+<div class="control-group inline">
+  <div class="controls">
+    <label class="radio">
+      <input type="radio" name="novel_rating_4" id="1" value="1">Strongly Disagree</label>
+    <label class="radio">
+      <input type="radio" name="novel_rating_4" id="2" value="2">Disagree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_4" id="3" value="3">Neutral</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_4" id="4" value="4">Agree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_4" id="5" value="5">Strongly Agree</label>
+  </div>
+</div>
+</div>
+
+
+<div class="panel-heading">
+<h4>This movie is different from the type of movies i usually watch.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_implic_4" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_implic_4" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_4" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_4" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_4" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-heading">
+<h4>I normally wouldn’t have discovered this movie on my own. I needed a website like this to find movies like this one.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_4" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_4" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_4" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_4" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_4" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> I am pleasantly surprised / (or in a positive way) that i was recommended this movie.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_4" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_4" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_4" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_4" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_4" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> (Answer after going through the other recommendations). This movie is different from the other movies recommended.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="diversity_rating_4" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="diversity_rating_4" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_4" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_4" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_4" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<!-- For Recommendation 5.......................................................................... -->
+
+<div class="panel-heading">
+      <h3><strong><a href="/view_recommended_item/{{pred_5.id}}" target="_blank">{{pred_5.title}}</a></strong></h3>
+      <h6>click on title for more details</h6>
+      <h4> Your predicted rating for {{pred_5.title}} is {{tp_1.num_5}} out of 10</h4>
+
+      <!-- <td><a href="/view_item/{{pred_5.id}}">{{pred_5.title}}</a></td> -->
+      <h6> Item id:{{rec.pred_5}}:{{pred_5.id}}</h6>
+      <!-- <img src={{pred_5.imgurl}}> -->
+      <h4><strong>Please answer the following questions, after experiencing each movie.</strong></h4>
+
+
+      <div class="panel panel-body" style="background-color:#f2f4f7">
+
+
+
+      <div class="panel-heading">
+        <h4>This movie is similar to the movies I rated / matches my list preferences.</h4>
+
+    <div class="control-group inline">
+      <div class="controls">
+        <label class="radio">
+          <input type="radio" name="user_rating_5" id="1" value="1">Strongly Disagree</label>
+        <label class="radio">
+          <input type="radio" name="user_rating_5" id="2" value="2">Disagree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_5" id="3" value="3">Neutral</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_5" id="4" value="4">Agree</label>
+              <label class="radio">
+          <input type="radio" name="user_rating_5" id="5" value="5">Strongly Agree</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-heading">
+    <h4>This is the first time I'm seeing/hearing about this movie.</h4>
+
+<div class="control-group inline">
+  <div class="controls">
+    <label class="radio">
+      <input type="radio" name="novel_rating_5" id="1" value="1">Strongly Disagree</label>
+    <label class="radio">
+      <input type="radio" name="novel_rating_5" id="2" value="2">Disagree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_5" id="3" value="3">Neutral</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_5" id="4" value="4">Agree</label>
+          <label class="radio">
+      <input type="radio" name="novel_rating_5" id="5" value="5">Strongly Agree</label>
+  </div>
+</div>
+</div>
+
+
+<div class="panel-heading">
+<h4>This movie is different from the type of movies i usually watch.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_implic_5" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_implic_5" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_5" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_5" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_implic_5" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="panel-heading">
+<h4>I normally wouldn’t have discovered this movie on my own. I needed a website like this to find movies like this one.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_5" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_find_rating_5" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_5" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_5" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_find_rating_5" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> I am pleasantly surprised / (or in a positive way) that i was recommended this movie.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_5" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="unexp_recom_rating_5" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_5" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_5" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="unexp_recom_rating_5" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+
+<div class="panel-heading">
+<h4> (Answer after going through the other recommendations). This movie is different from the other movies recommended.</h4>
+
+<div class="control-group inline">
+<div class="controls">
+<label class="radio">
+  <input type="radio" name="diversity_rating_5" id="1" value="1">Strongly Disagree</label>
+<label class="radio">
+  <input type="radio" name="diversity_rating_5" id="2" value="2">Disagree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_5" id="3" value="3">Neutral</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_5" id="4" value="4">Agree</label>
+      <label class="radio">
+  <input type="radio" name="diversity_rating_5" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+<div class="panel panel-heading">
+
+<button class="btn btn-danger btn-lg" id="update-button" type="submit">Submit Recommendation Feedback</button>
+      </form>
+
+
+</div>
+
+
+{% endblock %}

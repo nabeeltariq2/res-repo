@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<h2>Your Overall Feedback</h2>
+
+<div class="container">
+  <h3><b>Instructions</b></h3>
+  <h4> Please answer the following questions, based on your <strong>overall experience</strong> of the recommendations and website.</h4>
+  <h4> Once you are done, click submit.</h4>
+  <!-- <h4>You can sort the columns by clicking on the column names. You can filter each column as well, look at the bottom of the the table </h4> -->
+
+</div>
+<div class="panel panel-default">
+
+  <form class="form-inline" action="/overall_feedback" method="POST">
+
+
+
+    <div class="panel panel-body" style="background-color:#e8ebef">
+    <h3>On an overall basis, I was recommended movies that are different from what i usually watch.</h3>
+    <div class="">
+    </div>
+  <div class="control-group inline">
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="overall_unexp_implicit" id="1" value="1">Strongly Disgree</label>
+      <label class="radio">
+        <input type="radio" name="overall_unexp_implicit" id="2" value="2">Disagree</label>
+            <label class="radio">
+        <input type="radio" name="overall_unexp_implicit" id="3" value="3">Neutral</label>
+            <label class="radio">
+        <input type="radio" name="overall_unexp_implicit" id="4" value="4">Agree</label>
+            <label class="radio">
+        <input type="radio" name="overall_unexp_implicit" id="5" value="5">Strongly Agree</label>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="panel panel-body" style="background-color:#e8ebef">
+  <h3>On an overall basis, i was recommended items I wouldnt have normally discovered on my own.</h3>
+  <div class="">
+  </div>
+<div class="control-group inline">
+  <div class="controls">
+    <label class="radio">
+      <input type="radio" name="novelty" id="1" value="1">Strongly Disgree</label>
+    <label class="radio">
+      <input type="radio" name="novelty" id="2" value="2">Disagree</label>
+          <label class="radio">
+      <input type="radio" name="novelty" id="3" value="3">Neutral</label>
+          <label class="radio">
+      <input type="radio" name="novelty" id="4" value="4">Agree</label>
+          <label class="radio">
+      <input type="radio" name="novelty" id="5" value="5">Strongly Agree</label>
+  </div>
+</div>
+</div>
+
+  <!-- Default panel contents -->
+
+        <div class="panel panel-body" style="background-color:#e8ebef">
+        <h3>On an overall basis, the recommendations were diverse (different from one another).</h3>
+        <div class="">
+        </div>
+      <div class="control-group inline">
+        <div class="controls">
+          <label class="radio">
+            <input type="radio" name="unexpectedness" id="1" value="1">Strongly Disgree</label>
+          <label class="radio">
+            <input type="radio" name="unexpectedness" id="2" value="2">Disgree</label>
+                <label class="radio">
+            <input type="radio" name="unexpectedness" id="3" value="3">Neutral</label>
+                <label class="radio">
+            <input type="radio" name="unexpectedness" id="4" value="4">Agree</label>
+                <label class="radio">
+            <input type="radio" name="unexpectedness" id="5" value="5">Strongly Agree</label>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="panel panel-body" style="background-color:#e8ebef">
+  <h3>On an overall basis, I am satisfied with the recommendations.</h3>
+  <div class="">
+  </div>
+<div class="control-group inline">
+  <div class="controls">
+    <label class="radio">
+      <input type="radio" name="satisfaction" id="1" value="1">Strongly Disgree</label>
+    <label class="radio">
+      <input type="radio" name="satisfaction" id="2" value="2">Disgree</label>
+          <label class="radio">
+      <input type="radio" name="satisfaction" id="3" value="3">Neutral</label>
+          <label class="radio">
+      <input type="radio" name="satisfaction" id="4" value="4">Agree</label>
+          <label class="radio">
+      <input type="radio" name="satisfaction" id="5" value="5">Strongly Agree</label>
+  </div>
+</div>
+</div>
+
+<div class="panel panel-body" style="background-color:#e8ebef">
+<h3>Based on my experience, I will recommend these movies / This website to my family / friends / others.</h3>
+<div class="">
+</div>
+<div class="control-group inline">
+<div class="controls">
+  <label class="radio">
+    <input type="radio" name="recommendation" id="1" value="1">Strongly Disgree</label>
+  <label class="radio">
+    <input type="radio" name="recommendation" id="2" value="2">Disgree</label>
+        <label class="radio">
+    <input type="radio" name="recommendation" id="3" value="3">Neutral</label>
+        <label class="radio">
+    <input type="radio" name="recommendation" id="4" value="4">Agree</label>
+        <label class="radio">
+    <input type="radio" name="recommendation" id="5" value="5">Strongly Agree</label>
+</div>
+</div>
+</div>
+
+
+<div class="panel panel-heading" >
+
+<button class="btn btn-success btn-lg" id="update-button" type="submit">Submit Overall Feedback</button>
+
+
+      </form>
+
+    </div>
+
+
+<div class="container">
+<h4>In case of any queries/issues/additional feedback, please email <b>movirec_movies@gmail.com</b></h4>
+</div>
+
+
+{% endblock %}
