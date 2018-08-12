@@ -426,7 +426,9 @@ def within_feedback():
     any_feedback = request.form.get("any_feedback")
     model.add_within_feedback(user_id,within_unexp_find, within_unexp_implicit, within_novel, within_diversity, within_satisfaction, any_feedback)
     model.add_pageview(user_id=session["user"], item_id=None, page="within feedback", activity_type="finish the with-effects feedback", rating=None) #pageview
-    flash ("Thank you for the feedback, and using the website!")
+    flash ("Thank you for using the website! You can LOG OUT now OR continue experimenting!")
+    flash ("See how your recommendations change with more or different items!")
+    # return redirect(url_for('process_logout'))
     return redirect(url_for('show_user_details', id=user_id))
 
 
