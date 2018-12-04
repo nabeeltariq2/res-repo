@@ -17,3 +17,9 @@ A recommender systems platform for running online user experiments. Key features
 Create a virtual environment in python install packages in requirements.txt create database model - python model.py add data - python seed.py (based on your data) run app - python application.py
 
 # Citations necessary for any usage of this platform.
+
+
+# Citations
+
+- NicolasHug. “NicolasHug/Surprise.” GitHub, 26 Oct. 2018, github.com/NicolasHug/Surprise.
+- Sidooms. “Sidooms/MovieTweetings.” GitHub, 4 Dec. 2018, github.com/sidooms/MovieTweetings.
